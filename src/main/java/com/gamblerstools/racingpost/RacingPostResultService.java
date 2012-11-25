@@ -44,7 +44,7 @@ public class RacingPostResultService implements ResultService {
 		for(Integer raceId:raceIds) {
 			results.add(getRaceResult(raceId));
 		}
-		return null;
+		return results;
 	}
 	private Result getRaceResult(int raceId) {
 		Document doc = documentRetriever.getDocument("http://www.racingpost.com/horses/result_home.sd?race_id="+raceId);
@@ -73,7 +73,6 @@ public class RacingPostResultService implements ResultService {
 		String name = extractString("</span>(.*)", ".leftColBig h3", doc);
 		//TODO Use a factory to create this
 		return new RacingPostRace(meeting, raceTime, name);
-
 	}
 	private Meeting getMeeting(Document doc) {
 		Course course = getCourse(doc);
