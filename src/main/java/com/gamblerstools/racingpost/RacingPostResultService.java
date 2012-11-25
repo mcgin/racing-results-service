@@ -76,30 +76,18 @@ public class RacingPostResultService implements ResultService {
 		return new RacingPostRace(course, meeting, raceTime, name);
 
 	}
-	
-	private String extractString(String expression, String selector, Document doc) {
-		Pattern pattern = Pattern.compile(expression);
-		Matcher matcher = pattern.matcher(doc.select(selector).get(0).html());
-		matcher.find();
-		return Jsoup.parse(matcher.group(1).trim()).text();
-	}
 	private Meeting getMeeting(Document doc) {
 		Course course = getCourse(doc);
-		String expression = "[^0-9]*(\\d{1,2} ... \\d{4})";
-		Pattern pattern = Pattern.compile(expression);
-		Matcher matcher = pattern.matcher(doc.select("h1").get(0).html());
-		matcher.find();
-		LocalDate meetingDate = DateTimeFormat.forPattern("dd MMM yyyy").parseLocalDate(matcher.group(1).trim());
+		String dateString = extractString("[^0-9]*(\\d{1,2} ... \\d{4})", "h1", doc);
+		LocalDate meetingDate = DateTimeFormat.forPattern("dd MMM yyyy").parseLocalDate(dateString);
 		//TODO Create this using a factory
 		return new RacingPostMeeting(course, meetingDate);
 	}
 	private Course getCourse(Document doc) {
-		String expression = "(.*) Result";
-		Pattern pattern = Pattern.compile(expression);
-		Matcher matcher = pattern.matcher(doc.select("h1").get(0).html());
-		matcher.find();
+		String courseName = extractString("(.*) Result", "h1", doc);
+		
 		//TODO Create this using a factory
-		return new RacingPostCourse(matcher.group(1).trim());
+		return new RacingPostCourse(courseName);
 	}
 	
 	
@@ -111,10 +99,17 @@ public class RacingPostResultService implements ResultService {
 		Pattern pattern = Pattern.compile(expression);
 		Matcher matcher = pattern.matcher(doc.toString());
 		while (matcher.find()) {
-			ids.add(Integer.parseInt(matcher.group(1)));
+			ids.add(Integer.parseInt(matcher.group(1).trim()));
 		}
 		
 		return ids;
+	}
+
+	private String extractString(String expression, String selector, Document doc) {
+		Pattern pattern = Pattern.compile(expression);
+		Matcher matcher = pattern.matcher(doc.select(selector).get(0).html());
+		matcher.find();
+		return Jsoup.parse(matcher.group(1).trim()).text();
 	}
 
 }
