@@ -1,7 +1,5 @@
 package com.gamblerstools.racingpost.model;
 
-import java.util.Calendar;
-
 import org.joda.time.LocalDate;
 
 import com.gamblerstools.model.Course;

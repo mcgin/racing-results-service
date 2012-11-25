@@ -49,20 +49,19 @@ public class RacingPostResultService implements ResultService {
 	private Result getRaceResult(int raceId) {
 		Document doc = documentRetriever.getDocument("http://www.racingpost.com/horses/result_home.sd?race_id="+raceId);
 
-		parseRaceResult(doc);
-		logger.info(doc.select("title").toString());
-		return null;
+		return parseRaceResult(doc);
+		
 	}
 
-	private void parseRaceResult(Document doc) {
+	private Result parseRaceResult(Document doc) {
 		// TODO Auto-generated method stub
-		logger.info(getCourse(doc).toString());
-		logger.info(getMeeting(doc).toString());
-		logger.info(getRace(doc).toString());
+		logger.debug(getCourse(doc).toString());
+		logger.debug(getMeeting(doc).toString());
+		logger.debug(getRace(doc).toString());
+		return null;
 	}
 	private Race getRace(Document doc) {
 		
-		Course course = getCourse(doc);
 		Meeting meeting = getMeeting(doc);
 		
 		String timeString = extractString("(\\d{1,2}:\\d{2})", ".timeNavigation", doc);
@@ -73,7 +72,7 @@ public class RacingPostResultService implements ResultService {
 		
 		String name = extractString("</span>(.*)", ".leftColBig h3", doc);
 		//TODO Use a factory to create this
-		return new RacingPostRace(course, meeting, raceTime, name);
+		return new RacingPostRace(meeting, raceTime, name);
 
 	}
 	private Meeting getMeeting(Document doc) {

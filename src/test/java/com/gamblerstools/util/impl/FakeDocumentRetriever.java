@@ -1,6 +1,5 @@
 package com.gamblerstools.util.impl;
 
-import java.io.File;
 import java.io.IOException;
 
 import org.jsoup.Jsoup;

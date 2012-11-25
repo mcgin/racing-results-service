@@ -1,6 +1,6 @@
 package com.gamblerstools.results.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Calendar;
 
@@ -10,7 +10,6 @@ import org.junit.Test;
 
 import com.gamblerstools.racingpost.RacingPostResultService;
 import com.gamblerstools.util.impl.FakeDocumentRetriever;
-import com.gamblerstools.util.impl.SimpleDocumentRetriever;
 
 public class ResultServiceTest {
 
