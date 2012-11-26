@@ -1,6 +1,6 @@
 package com.gamblerstools.model;
 
-public interface FinishingPosition<T> extends Comparable<T> {
+public interface FinishingPosition extends Comparable<FinishingPosition> {
 	public Integer getFinishingPosition();
 	public RaceOutcome getRaceOutcome();
 }

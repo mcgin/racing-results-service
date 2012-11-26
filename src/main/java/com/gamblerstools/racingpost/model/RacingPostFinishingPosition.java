@@ -4,7 +4,7 @@ import com.gamblerstools.model.FinishingPosition;
 import com.gamblerstools.model.RaceOutcome;
 
 public class RacingPostFinishingPosition implements
-		FinishingPosition<FinishingPosition> {
+		FinishingPosition {
 
 	private RaceOutcome outcome;
 	private Integer position;
