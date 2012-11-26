@@ -6,4 +6,5 @@ public interface Race {
 	public DateTime getRaceTime();
 	public Meeting getMeeting();
 	public String getName();
+	public String getId();
 }

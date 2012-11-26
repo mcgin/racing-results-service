@@ -10,19 +10,25 @@ public class RacingPostRace implements Race {
 	private DateTime raceTime;
 	private Meeting meeting;
 	private String name;
+	private String id;
 
-	public RacingPostRace(Meeting meeting, DateTime raceTime, String name) {
+	public RacingPostRace(String id, Meeting meeting, DateTime raceTime, String name) {
 		this.meeting = meeting;
 		this.raceTime = raceTime;
 		this.name = name;
+		this.id = id;
 	}
 
 	@Override
 	public DateTime getRaceTime() {
 		return raceTime;
 	}
+	@Override
+	public String getId() {
+		return id;
+	}
 
-		@Override
+	@Override
 	public Meeting getMeeting() {
 		return meeting;
 	}
@@ -37,6 +43,6 @@ public class RacingPostRace implements Race {
 	@Override
 	public String toString() {
 		return "RacingPostRace [raceTime=" + raceTime + ", meeting=" + meeting
-				+ ", name=" + name + "]";
+				+ ", name=" + name + ", id=" + id + "]";
 	}
 }

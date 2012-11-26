@@ -5,4 +5,5 @@ import org.joda.time.LocalDate;
 public interface Meeting {
 	public LocalDate getMeetingDate();
 	public Course getCourse();
+	public String getId();
 }

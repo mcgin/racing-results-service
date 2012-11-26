@@ -80,10 +80,11 @@ public class RacingPostResultService implements ResultService {
 		DateTime raceTime = DateTimeFormat.forPattern("kk:mm yyyy MM dd").parseDateTime(timeString);
 		
 		String name = extractString("</span>(.*)", ".leftColBig h3", doc);
-		
+		//"raceId":"561678"
+		String raceId = extractString("raceId\":\"(\\d+)\"", "html", doc);
 		List<RaceEntry> raceEntries = getRaceEntries(doc);
 		//TODO Use a factory to create this
-		return new RacingPostRace(meeting, raceTime, name);
+		return new RacingPostRace(raceId, meeting, raceTime, name);
 	}
 	private List<RaceEntry> getRaceEntries(Document doc) {
 		List<RaceEntry> raceEntries = new ArrayList<>();
@@ -95,7 +96,8 @@ public class RacingPostResultService implements ResultService {
 			FinishingPosition position = parsePosition(entryNode.select("td:eq(1) h3").first().text().trim());
 			Horse horse = parseHorse(entryNode.select("td:eq(3) b a").first());
 			logger.debug(horse.toString());
-			throw new RuntimeException("CONTINUE FROM HERE complete the race entry, neeed to parse specifics about the entry, i.e. weight etc.");
+			
+			//throw new RuntimeException("CONTINUE FROM HERE complete the race entry, neeed to parse specifics about the entry, i.e. weight etc.");
 		}
 		return raceEntries;
 	}
@@ -136,13 +138,13 @@ public class RacingPostResultService implements ResultService {
 		String dateString = extractString("[^0-9]*(\\d{1,2} ... \\d{4})", "h1", doc);
 		LocalDate meetingDate = DateTimeFormat.forPattern("dd MMM yyyy").parseLocalDate(dateString);
 		//TODO Create this using a factory
-		return new RacingPostMeeting(course, meetingDate);
+		return new RacingPostMeeting(meetingDate.toString()+ course.toString(), course, meetingDate);
 	}
 	private Course getCourse(Document doc) {
 		String courseName = extractString("(.*) Result", "h1", doc);
 		
 		//TODO Create this using a factory
-		return new RacingPostCourse(courseName);
+		return new RacingPostCourse(null, courseName);
 	}
 	
 	
