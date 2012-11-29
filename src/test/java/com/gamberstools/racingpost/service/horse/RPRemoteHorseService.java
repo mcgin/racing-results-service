@@ -6,10 +6,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.gamblerstools.service.HorseService;
+
 public class RPRemoteHorseService {
 
+	HorseService service;
 	@Before
 	public void setUp() throws Exception {
+		
 	}
 
 	@After

@@ -5,11 +5,13 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import com.gamblerstools.model.Course;
 import com.gamblerstools.racingpost.service.course.RPRemoteCourseService;
 import com.gamblerstools.service.CourseService;
 
+@Category(com.gamblerstools.test.category.IntegrationTest.class)
 public class RPRemoteCourseServiceTest {
 	CourseService service;
 	@Before

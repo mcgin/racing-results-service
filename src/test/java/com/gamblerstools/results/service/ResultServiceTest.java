@@ -1,7 +1,5 @@
 package com.gamblerstools.results.service;
 
-import static org.junit.Assert.assertTrue;
-
 import java.util.Calendar;
 
 import org.junit.After;

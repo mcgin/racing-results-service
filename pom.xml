@@ -4,6 +4,7 @@
 	<groupId>com.gamblerstools</groupId>
 	<artifactId>results-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -15,11 +16,55 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-			
+			<plugin><!-- Used to exclude the integration tests -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12.4</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit47</artifactId>
+						<version>2.12.4</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<excludedGroups>com.gamblerstools.test.category.IntegrationTest</excludedGroups>
+				</configuration>
+			</plugin>
+
+			<plugin><!-- Used to run the Integration tests -->
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.12.4</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit47</artifactId>
+						<version>2.12.4</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<groups>com.gamblerstools.test.category.IntegrationTest</groups>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+						</goals>
+						<configuration>
+							<includes>
+								<include>**/*.class</include>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
 		</plugins>
 	</build>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -31,7 +76,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.8.2</version>
+			<version>4.10</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
