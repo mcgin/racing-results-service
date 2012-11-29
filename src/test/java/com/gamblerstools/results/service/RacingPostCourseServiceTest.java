@@ -1,12 +1,10 @@
 package com.gamblerstools.results.service;
 
-import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.gamblerstools.racingpost.RacingPostCourseService;
+import com.gamblerstools.racingpost.service.course.RPRemoteCourseService;
 
 public class RacingPostCourseServiceTest {
 
@@ -20,8 +18,8 @@ public class RacingPostCourseServiceTest {
 
 	@Test
 	public void test() {
-		RacingPostCourseService service = new RacingPostCourseService();
-		service.findCourse("Lingfield");
+		RPRemoteCourseService service = new RPRemoteCourseService();
+		service.findCourseByName("Lingfield");
 	}
 
 }

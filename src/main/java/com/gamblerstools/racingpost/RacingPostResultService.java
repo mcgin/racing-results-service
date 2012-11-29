@@ -33,7 +33,7 @@ import com.gamblerstools.racingpost.model.RacingPostFinishingPosition;
 import com.gamblerstools.racingpost.model.RacingPostHorse;
 import com.gamblerstools.racingpost.model.RacingPostMeeting;
 import com.gamblerstools.racingpost.model.RacingPostRace;
-import com.gamblerstools.results.service.ResultService;
+import com.gamblerstools.service.ResultService;
 import com.gamblerstools.util.DocumentRetriever;
 
 public class RacingPostResultService implements ResultService {
