@@ -1,4 +1,4 @@
-package com.gamberstools.racingpost.service.horse;
+package com.gamblerstools.racingpost.service.horse;
 
 import static org.junit.Assert.*;
 
