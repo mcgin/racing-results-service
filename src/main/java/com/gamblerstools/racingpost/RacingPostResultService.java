@@ -93,7 +93,14 @@ public class RacingPostResultService implements ResultService {
 		
 		for(Element entry:entries) {
 			Element entryNode = entry.select("tr:eq(1)").first();
-			FinishingPosition position = parsePosition(entryNode.select("td:eq(1) h3").first().text().trim());
+			//logger.debug(entry.toString());
+			FinishingPosition position;
+			try {
+				position = parsePosition(entryNode.select("td:eq(1) h3").first().text().trim());
+			} catch (NullPointerException npe) {
+				logger.debug("No entry found in "+entry.toString());
+				continue;
+			}
 			Horse horse = parseHorse(entryNode.select("td:eq(3) b a").first());
 			logger.debug(horse.toString());
 			

@@ -1,5 +1,7 @@
 package com.gamblerstools.results.service;
 
+import static org.junit.Assert.*;
+
 import java.util.Calendar;
 
 import org.junit.After;
@@ -25,7 +27,7 @@ public class ResultServiceTest {
 		ResultService resultService = new RacingPostResultService(new FakeDocumentRetriever());
 		Calendar date = Calendar.getInstance();
 		date.add(Calendar.DATE, -1);
-		//assertTrue(resultService.getResults(date).size()>0);
+		assertTrue(resultService.getResults(date).size()>0);
 	}
 
 }
