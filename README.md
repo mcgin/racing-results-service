@@ -6,3 +6,5 @@ Alot of overlap between RPRemoteHorseService & RPRemoteCourseService should be r
 Expand the horse service to return more than just name and id - likely to mean findByName uses findById to get full details
 
 Expand the course service to return more than just name and id - likely to mean findByName uses findById to get full details
+
+Sort out the auto generated exception blocks in services

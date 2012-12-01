@@ -1,17 +1,17 @@
 package com.gamblerstools.racingpost.service.horse;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
-import com.gamblerstools.model.Course;
 import com.gamblerstools.model.Horse;
-import com.gamblerstools.racingpost.service.course.RPRemoteCourseService;
-import com.gamblerstools.service.CourseService;
 import com.gamblerstools.service.HorseService;
 
+@Category(com.gamblerstools.test.category.IntegrationTest.class)
 public class RPRemoteHorseServiceTest {
 
 	HorseService service;

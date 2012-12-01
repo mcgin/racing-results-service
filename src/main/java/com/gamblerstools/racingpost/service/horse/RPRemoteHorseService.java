@@ -12,9 +12,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
-import com.gamblerstools.model.Course;
 import com.gamblerstools.model.Horse;
-import com.gamblerstools.racingpost.model.RacingPostCourse;
 import com.gamblerstools.racingpost.model.RacingPostHorse;
 import com.gamblerstools.service.HorseService;
 
@@ -52,7 +50,6 @@ public class RPRemoteHorseService implements HorseService {
 
 	@Override
 	public Horse findHorseById(String id) {
-		// TODO Auto-generated method stub
 		// http://www.racingpost.com/horses/horse_home.sd?horse_id=90480
 		try {
 			Document doc = Jsoup.connect(
